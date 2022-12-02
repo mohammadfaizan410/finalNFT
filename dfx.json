@@ -1,0 +1,28 @@
+{
+  "canisters": {
+    "finalNFT_backend": {
+      "main": "src/finalNFT_backend/main.mo",
+      "type": "motoko"
+    },
+    "finalNFT_frontend": {
+      "dependencies": [
+        "finalNFT_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/finalNFT_frontend/src/index.html"
+      },
+      "source": [
+        "src/finalNFT_frontend/assets",
+        "dist/finalNFT_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
