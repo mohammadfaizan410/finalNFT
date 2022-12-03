@@ -4,6 +4,10 @@
       "main": "src/finalNFT_backend/main.mo",
       "type": "motoko"
     },
+    "nft": {
+      "main" : "src/NFT/nft.mo",
+      "type": "motoko"
+    },
     "finalNFT_frontend": {
       "dependencies": [
         "finalNFT_backend"
