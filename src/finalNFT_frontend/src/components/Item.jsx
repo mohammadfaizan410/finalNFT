@@ -6,6 +6,7 @@ import Button from "./Button.jsx";
 import { finalNFT_backend } from "../../../declarations/finalNFT_backend/index.js";
 import { Principal } from "@dfinity/principal";
 import { useState, useEffect } from "react";
+import CURRENT_USER_ID from "../index.jsx";
 import PriceLabel from "./PriceLabel.jsx";
   function Item(props) {
     const [name, setName] = useState();
@@ -58,6 +59,7 @@ import PriceLabel from "./PriceLabel.jsx";
         }
       } else if (props.role == "discover") {
         const originalOwner = await finalNFT_backend.getOriginalOwner(props.id);
+        setButton(<Button handleClick={handleBuy} text={"Buy"} />);
         if (originalOwner.toText() != CURRENT_USER_ID.toText()) {
           setButton(<Button handleClick={handleBuy} text={"Buy"} />);
         }
@@ -98,13 +100,13 @@ import PriceLabel from "./PriceLabel.jsx";
         console.log("transfer: " + transferResult);
         if (transferResult == "Success") {
           setLoaderHidden(true);
-          setButton();
+          setButton(<Button handleClick={handleBuy} text={"Buy"} />);
           setPriceInput();
           setOwner("Skeleton");
           setSellStatus("Listed");
-          setButton(<Button handleClick={handleBuy} text={"Buy"} />);
         }
       }
+      setBlur();
     }
   
     async function handleBuy() {
